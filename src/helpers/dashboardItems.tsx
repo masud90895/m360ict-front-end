@@ -1,5 +1,5 @@
 import type { MenuProps } from "antd";
-import { PicRightOutlined, UserSwitchOutlined } from "@ant-design/icons";
+import { PicRightOutlined, UserOutlined } from "@ant-design/icons";
 import Link from "next/link";
 
 export const dashboardItems = () => {
@@ -29,7 +29,7 @@ export const dashboardItems = () => {
       ),
       key: "users",
       icon: (
-        <UserSwitchOutlined
+        <UserOutlined
           style={{
             fontSize: "18px",
           }}
