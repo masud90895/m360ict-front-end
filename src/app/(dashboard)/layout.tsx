@@ -6,6 +6,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import SideMenuUI from "@/components/ui/SideMenuUI";
 import { dashboardItems } from "@/helpers/dashboardItems";
+import DashboardSidebar from "@/components/dashboard/DashboardSider";
+import DashboardNavbar from "@/components/dashboard/DashboardNavbar";
 
 const { Content } = Layout;
 
@@ -21,8 +23,6 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   // });
 
   // if (isLoading) return <LoadingPage />;
-
- 
 
   return (
     <Layout
@@ -50,10 +50,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       ) : (
         <section>
           {/*//! for small & medium device drawer */}
-          <DashboardSidebar
-            collapsed={collapsed}
-            setCollapsed={setCollapsed}
-          />
+          <DashboardSidebar collapsed={collapsed} setCollapsed={setCollapsed} />
         </section>
       )}
       {/* //! Main Content of dashboard with dashboard navbar */}
@@ -66,7 +63,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
             overflowY: "initial",
           }}
         >
-          <div className="commonAdmin">{children}</div>
+          <div className="bg-white rounded p-4">{children}</div>
         </Content>
         {/* <Footer></Footer> */}
       </Layout>
