@@ -7,6 +7,10 @@ import InputField from "@/components/Forms/InputField";
 import { Button } from "antd";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { MdAlternateEmail } from "react-icons/md";
+import { CiFaceSmile } from "react-icons/ci";
+import { RiLockPasswordLine } from "react-icons/ri";
+import Link from "next/link";
 
 const SignUp = () => {
   // create schema for validation for name,email,password with proper error message
@@ -112,6 +116,7 @@ const SignUp = () => {
             placeholder="Your Email"
             required
             type="email"
+            icon={MdAlternateEmail}
           />
 
           {/* name */}
@@ -124,6 +129,7 @@ const SignUp = () => {
             placeholder="Your Name"
             required
             type="text"
+            icon={CiFaceSmile}
           />
 
           {/* password */}
@@ -136,7 +142,19 @@ const SignUp = () => {
             placeholder="Your Password"
             required
             type="password"
+            icon={RiLockPasswordLine}
           />
+
+          {/* checkout with I agree to the Terms & Conditions */}
+          <div className="flex items-center gap-2 my-2">
+            <input
+              type="checkbox"
+              className="w-4 h-4  rounded-lg transition-all duration-500 ease-in-out"
+            />
+            <p className="text-[12px] font-medium text-[#8A94A6]">
+              I agree to the Terms & Conditions
+            </p>
+          </div>
 
           {/* Sign up Button */}
 
@@ -149,6 +167,17 @@ const SignUp = () => {
         </form>
 
         {/* form */}
+
+        {/* 
+        already have an account? Sign in 
+        */}
+
+        <p className="text-center text-[12px] font-medium text-primary">
+          Already have an account?{" "}
+          <Link href={"/register"} className="text-[#377DFF] cursor-pointer hover:underline  transition-all duration-500 ease-in-out">
+            Sign In
+          </Link>
+        </p>
       </section>
     </main>
   );

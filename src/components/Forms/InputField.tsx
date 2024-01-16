@@ -1,5 +1,6 @@
 import React from "react";
 import { FieldValues, UseFormRegister } from "react-hook-form";
+import { IconType } from "react-icons";
 
 interface InputFieldProps {
   label?: string;
@@ -14,6 +15,7 @@ interface InputFieldProps {
   disabled?: boolean;
   defaultValue?: any;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  icon?: IconType;
 }
 
 const InputField = ({
@@ -29,6 +31,7 @@ const InputField = ({
   disabled,
   defaultValue,
   onChange,
+  icon: Icon,
 }: InputFieldProps) => {
   return (
     <div className="w-full">
@@ -48,22 +51,7 @@ const InputField = ({
       {register ? (
         <div className="relative text-gray-600 focus-within:text-gray-400">
           <span className="absolute inset-y-0 left-0 flex items-center pl-2">
-            <button
-              type="submit"
-              className="p-1 focus:outline-none focus:shadow-outline"
-            >
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                className="w-6 h-6"
-              >
-                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-              </svg>
-            </button>
+            {Icon && <Icon className="w-5 h-5 text-primary" />}
           </span>
           <input
             type={type ? type : "text"}
@@ -76,8 +64,12 @@ const InputField = ({
                 ? customClass
                 : `${
                     errors && name && errors[name]
-                      ? "border-1 w-full pl-10  bg-red-50 rounded-lg py-2 px-[10px] font-inter text-sm leading-6 placeholder:capitalize text-gray-90 focus:outline-rose-500 text-[12px]"
-                      : "border w-full pl-10 bg-gray-5 rounded-lg border-border py-2 px-[10px] font-inter text-sm leading-6 placeholder:capitalize text-gray-90 focus:outline-purple text-[12px]"
+                      ? `border-1 w-full ${
+                          Icon && "pl-10"
+                        }   bg-red-50 rounded-lg py-2 px-[10px] font-inter text-sm leading-6 placeholder:capitalize text-gray-90 focus:outline-rose-500 text-[12px]`
+                      : `border w-full ${
+                          Icon && "pl-10"
+                        } bg-gray-5 rounded-lg border-border py-2 px-[10px] font-inter text-sm leading-6 placeholder:capitalize text-gray-90 focus:outline-purple text-[12px]`
                   }`
             }`}
             {...register(name ? name : "noName", {
