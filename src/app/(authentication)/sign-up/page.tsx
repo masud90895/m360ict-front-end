@@ -1,11 +1,32 @@
 "use client";
 import React from "react";
-import { useForm } from "react-hook-form";
+
+import FormSelectField from "@/components/Forms/FormSelectField";
+import { FormProvider, useForm } from "react-hook-form";
+import InputField from "@/components/Forms/InputField";
+import { Button } from "antd";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
 const SignUp = () => {
-  const methods = useForm();
+  // create schema for validation for name,email,password with proper error message
 
-  const onSubmit = (data: any) => console.log(data);
+  const schema = z.object({
+    name: z.string().min(3, { message: "Name must be at least 3 characters" }),
+    email: z.string().email({ message: "Invalid email address" }),
+    password: z
+      .string()
+      .min(6, { message: "Password must be at least 6 characters" }),
+  });
+
+  type ValidationSchemaType = z.infer<typeof schema>;
+
+  const methods = useForm<ValidationSchemaType>({
+    resolver: zodResolver(schema),
+  });
+
+  const onSubmit = (data: { name: string; email: string; password: string }) =>
+    console.log(data);
   return (
     <main>
       <section className="mx-auto my-10 max-w-xl rounded-xl  px-4 py-10 text-gray-700 shadow sm:px-8">
@@ -77,16 +98,55 @@ const SignUp = () => {
         {/* or */}
         <div className="flex items-center justify-center my-5">
           <div className="w-full h-[1px] bg-[#E4E7EB]"></div>
-          <p className="mx-3 text-[14px] font-medium text-[#8A94A6]">
-           OR
-          </p>
+          <p className="mx-3 text-[14px] font-medium text-[#8A94A6]">OR</p>
           <div className="w-full h-[1px] bg-[#E4E7EB]"></div>
         </div>
 
+        <form onSubmit={methods.handleSubmit(onSubmit)}>
+          {/* email */}
+          <InputField
+            label="Email"
+            errors={methods?.formState?.errors}
+            name="email"
+            register={methods?.register}
+            placeholder="Your Email"
+            required
+            type="email"
+          />
 
+          {/* name */}
 
+          <InputField
+            label="Name"
+            errors={methods?.formState?.errors}
+            name="name"
+            register={methods?.register}
+            placeholder="Your Name"
+            required
+            type="text"
+          />
 
+          {/* password */}
 
+          <InputField
+            label="Password"
+            errors={methods?.formState?.errors}
+            name="password"
+            register={methods?.register}
+            placeholder="Your Password"
+            required
+            type="password"
+          />
+
+          {/* Sign up Button */}
+
+          <Button
+            htmlType="submit"
+            className="bg-[#377DFF] border border-transparent hover:border-[#377DFF] hover:bg-transparent hover:text-[#377DFF] text-white rounded-lg w-full my-[20px] text-[14px] font-medium transition-all duration-500 ease-in-out  "
+          >
+            Sign Up
+          </Button>
+        </form>
 
         {/* form */}
       </section>
