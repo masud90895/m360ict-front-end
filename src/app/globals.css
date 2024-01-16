@@ -5,3 +5,18 @@
 .common {
   @apply mx-auto max-w-7xl px-6 pb-8 pt-20 sm:pt-24 lg:px-8 lg:pt-20;
 }
+
+.commonNavbar {
+  @apply lg:px-[81px] lg:py-[28px] px-[20px] py-[18px];
+}
+
+.ant-select-selector {
+  background-color: #f0f5fa !important;
+  border: none !important;
+  color: #b0b7c3 !important ;
+  font-size: 12px !important;
+}
+
+.ant-select {
+  border-radius: 10px !important;
+}
