@@ -1,6 +1,6 @@
 import React from "react";
 import { UseFormReturn } from "react-hook-form";
-import { Button } from "antd";
+import { Button, message } from "antd";
 import Link from "next/link";
 
 type SignUpProps = {
@@ -10,6 +10,7 @@ type SignUpProps = {
   title: string;
   description: string;
   buttonTitle?: string;
+  isTerms: boolean;
 };
 
 const AuthenticationForm = ({
@@ -19,7 +20,16 @@ const AuthenticationForm = ({
   title,
   description,
   buttonTitle,
+  isTerms = true,
 }: SignUpProps) => {
+
+  const handleMessage = () => {
+    return message.error("We are working on it, please try again later")
+  }
+
+
+
+
   return (
     <section className="mx-auto my-10 max-w-xl rounded-xl  px-4 py-10 text-gray-700 shadow sm:px-8">
       {/* title */}
@@ -29,7 +39,7 @@ const AuthenticationForm = ({
       </div>
       {/* google and apple sign-up button with logo */}
       <div className="flex flex-col md:flex-row justify-between gap-3">
-        <button className="flex items-center gap-2 bg-secondary px-3 py-2 rounded-lg text-[14px] w-full justify-center text-primary hover:bg-transparent border border-transparent hover:border-secondary ">
+        <button onClick={()=>handleMessage()} className="flex items-center gap-2 bg-secondary px-3 py-2 rounded-lg text-[14px] w-full justify-center text-primary hover:bg-transparent border border-transparent hover:border-secondary ">
           <svg
             width="25"
             height="25"
@@ -56,7 +66,7 @@ const AuthenticationForm = ({
           </svg>
           Sign Up with Google
         </button>
-        <button className="flex items-center gap-2 bg-secondary px-3 py-2 rounded-lg text-[14px] w-full justify-center text-primary hover:bg-transparent border border-transparent  hover:border-secondary ">
+        <button onClick={()=>handleMessage()} className="flex items-center gap-2 bg-secondary px-3 py-2 rounded-lg text-[14px] w-full justify-center text-primary hover:bg-transparent border border-transparent  hover:border-secondary ">
           <svg
             width="20"
             height="24"
@@ -100,7 +110,10 @@ const AuthenticationForm = ({
             className="w-4 h-4  rounded-lg transition-all duration-500 ease-in-out"
           />
           <p className="text-[12px] font-medium text-[#8A94A6]">
-            I agree to the Terms & Conditions
+            {
+              isTerms ? "I agree to the Terms & Conditions" : "Remember me"
+            }
+           
           </p>
         </div>
 

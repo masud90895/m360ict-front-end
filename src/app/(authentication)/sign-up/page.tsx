@@ -1,16 +1,13 @@
 "use client";
 import React from "react";
 
-import FormSelectField from "@/components/Forms/FormSelectField";
-import { FormProvider, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import InputField from "@/components/Forms/InputField";
-import { Button } from "antd";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { MdAlternateEmail } from "react-icons/md";
 import { CiFaceSmile } from "react-icons/ci";
 import { RiLockPasswordLine } from "react-icons/ri";
-import Link from "next/link";
 import AuthenticationForm from "@/components/Forms/AuthenticationForm";
 
 const SignUp = () => {
@@ -41,6 +38,7 @@ const SignUp = () => {
         title="Getting Started"
         description="Create an account to continue"
         buttonTitle="Sign Up"
+        isTerms={true}
       >
         {/* email */}
         <InputField
