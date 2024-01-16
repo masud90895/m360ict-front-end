@@ -7,7 +7,7 @@
 }
 
 .commonNavbar {
-  @apply lg:px-[81px] lg:py-[28px] px-[20px] py-[18px];
+  @apply lg:px-[81px] lg:py-[18px] px-[20px] py-[18px];
 }
 
 .ant-select-selector {

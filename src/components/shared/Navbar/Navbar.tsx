@@ -21,7 +21,7 @@ const Navbar = () => {
   const onSubmit = (data: any) => console.log(data);
 
   return (
-    <main className="commonNavbar flex items-center justify-between">
+    <main className="commonNavbar flex items-center justify-between border-b">
       {/* Logo */}
       <Logo />
 
