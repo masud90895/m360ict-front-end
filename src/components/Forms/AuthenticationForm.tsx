@@ -22,13 +22,9 @@ const AuthenticationForm = ({
   buttonTitle,
   isTerms = true,
 }: SignUpProps) => {
-
   const handleMessage = () => {
-    return message.error("We are working on it, please try again later")
-  }
-
-
-
+    return message.error("We are working on it, please try again later");
+  };
 
   return (
     <section className="mx-auto my-10 max-w-xl rounded-xl  px-4 py-10 text-gray-700 shadow sm:px-8">
@@ -39,7 +35,10 @@ const AuthenticationForm = ({
       </div>
       {/* google and apple sign-up button with logo */}
       <div className="flex flex-col md:flex-row justify-between gap-3">
-        <button onClick={()=>handleMessage()} className="flex items-center gap-2 bg-secondary px-3 py-2 rounded-lg text-[14px] w-full justify-center text-primary hover:bg-transparent border border-transparent hover:border-secondary ">
+        <button
+          onClick={() => handleMessage()}
+          className="flex items-center gap-2 bg-secondary px-3 py-2 rounded-lg text-[14px] w-full justify-center text-primary hover:bg-transparent border border-transparent hover:border-secondary "
+        >
           <svg
             width="25"
             height="25"
@@ -64,9 +63,12 @@ const AuthenticationForm = ({
               fill="#1976D2"
             />
           </svg>
-          Sign Up with Google
+          {buttonTitle} with Google
         </button>
-        <button onClick={()=>handleMessage()} className="flex items-center gap-2 bg-secondary px-3 py-2 rounded-lg text-[14px] w-full justify-center text-primary hover:bg-transparent border border-transparent  hover:border-secondary ">
+        <button
+          onClick={() => handleMessage()}
+          className="flex items-center gap-2 bg-secondary px-3 py-2 rounded-lg text-[14px] w-full justify-center text-primary hover:bg-transparent border border-transparent  hover:border-secondary "
+        >
           <svg
             width="20"
             height="24"
@@ -88,7 +90,7 @@ const AuthenticationForm = ({
               </clipPath>
             </defs>
           </svg>
-          Sign Up with Apple ID
+          {buttonTitle} with Apple ID
         </button>
       </div>
 
@@ -110,10 +112,7 @@ const AuthenticationForm = ({
             className="w-4 h-4  rounded-lg transition-all duration-500 ease-in-out"
           />
           <p className="text-[12px] font-medium text-[#8A94A6]">
-            {
-              isTerms ? "I agree to the Terms & Conditions" : "Remember me"
-            }
-           
+            {isTerms ? "I agree to the Terms & Conditions" : "Remember me"}
           </p>
         </div>
 
