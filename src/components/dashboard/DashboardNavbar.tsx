@@ -66,7 +66,7 @@ const DashboardNavbar = ({
                 />
 
                 {/* button end  */}
-                <div className="md:flex hidden flex-1 items-center justify-center px-2 lg:ml-6 lg:justify-end">
+                <div className="md:flex hidden flex-1 items-center justify-center px-2 lg:ml-6 lg:justify-start">
                   <div className="w-full max-w-lg lg:max-w-xs">
                     <label htmlFor="search" className="sr-only">
                       Search
