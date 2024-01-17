@@ -31,7 +31,6 @@ const DashboardNavbar = ({
   const router = useRouter();
   const SignOutHandler = () => {
     removeFromLocalStorage(tokenKey);
-    // logout();
     message.error("Successfully Sign Out");
     router.push("/sign-in");
   };
