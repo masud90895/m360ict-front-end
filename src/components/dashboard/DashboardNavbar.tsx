@@ -14,6 +14,8 @@ import { useRouter } from "next/navigation";
 
 import Link from "next/link";
 import Logo from "../shared/Logo/Logo";
+import { removeFromLocalStorage } from "@/utils/local-storage";
+import { tokenKey } from "@/helpers/token/tokenKey";
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(" ");
@@ -26,14 +28,12 @@ const DashboardNavbar = ({
   collapsed: boolean;
   setCollapsed: any;
 }) => {
-  // const { data } = useUserProfileQuery(null);
-  // const userInfo = data?.data;
-
   const router = useRouter();
   const SignOutHandler = () => {
+    removeFromLocalStorage(tokenKey);
     // logout();
     message.error("Successfully Sign Out");
-    router.push("/login");
+    router.push("/sign-in");
   };
 
   return (
@@ -93,8 +93,6 @@ const DashboardNavbar = ({
                 </div>
 
                 {/* only Mobile */}
-
-
 
                 <div className=" w-full  py-3 px-16 md:hidden">
                   <Logo />

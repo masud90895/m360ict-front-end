@@ -16,13 +16,8 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
 
   const screens = useBreakpoint();
-  //  !screens is a hooks of ant design for responsive conditionals
+ 
 
-  // const { data, isLoading } = useUserProfileQuery(undefined, {
-  //   refetchOnMountOrArgChange: true,
-  // });
-
-  // if (isLoading) return <LoadingPage />;
 
   return (
     <Layout
