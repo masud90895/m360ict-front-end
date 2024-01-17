@@ -1,5 +1,5 @@
 const config = {
-  apiBaseUrl: "https://reqres.in/api",
+  apiBaseUrl: process.env.API_BASE_URL
 };
 
 export default config;

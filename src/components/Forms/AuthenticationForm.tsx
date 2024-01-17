@@ -11,6 +11,7 @@ type SignUpProps = {
   description: string;
   buttonTitle?: string;
   isTerms: boolean;
+  loading?: boolean;
 };
 
 const AuthenticationForm = ({
@@ -21,6 +22,7 @@ const AuthenticationForm = ({
   description,
   buttonTitle,
   isTerms = true,
+  loading = false,
 }: SignUpProps) => {
   const handleMessage = () => {
     return message.error("We are working on it, please try again later");
@@ -120,6 +122,7 @@ const AuthenticationForm = ({
 
         <Button
           htmlType="submit"
+          loading={loading}
           className="bg-[#377DFF] border border-transparent hover:border-[#377DFF] hover:bg-transparent hover:text-[#377DFF] text-white rounded-lg w-full my-[20px] text-[14px] font-medium transition-all duration-500 ease-in-out  "
         >
           {buttonTitle}
