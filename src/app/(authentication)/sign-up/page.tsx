@@ -53,7 +53,7 @@ const SignUp = () => {
         methods.reset();
       }
     } catch (error: any) {
-      console.error(error);
+      console.error(error?.data?.message);
       message.error(error?.data?.message);
     }
   };
