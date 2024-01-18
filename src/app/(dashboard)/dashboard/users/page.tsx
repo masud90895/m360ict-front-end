@@ -274,6 +274,7 @@ const UserList = () => {
                     placeholder="Enter email"
                     disabled
                     required
+                    defaultValue={editData?.email}
                   />
                 </Col>
               </Row>
@@ -303,6 +304,7 @@ const UserList = () => {
                     label="First Name"
                     placeholder="Enter First Name"
                     required
+                    defaultValue={editData?.profile?.firstName}
                   />
                 </Col>
                 <Col span={12} style={{ margin: "10px 0" }}>
@@ -311,6 +313,7 @@ const UserList = () => {
                     label="Last Name."
                     placeholder="Enter Last Name"
                     required
+                    defaultValue={editData?.profile?.lastName}
                   />
                 </Col>{" "}
               </Row>
