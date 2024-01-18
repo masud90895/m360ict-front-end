@@ -3,6 +3,8 @@ import React from "react";
 import Logo from "../Logo/Logo";
 import FormSelectField from "@/components/Forms/FormSelectField";
 import { FormProvider, useForm } from "react-hook-form";
+import { isLoggedIn } from "@/helpers/auth.service";
+import Link from "next/link";
 
 const NavbarData = [
   {
@@ -16,6 +18,8 @@ const NavbarData = [
 ];
 
 const Navbar = () => {
+  const isUserLogin = isLoggedIn();
+
   const methods = useForm();
 
   const onSubmit = (data: any) => console.log(data);
@@ -24,6 +28,14 @@ const Navbar = () => {
     <main className="commonNavbar flex items-center justify-between border-b">
       {/* Logo */}
       <Logo />
+
+      {isUserLogin && (
+        <Link href="/dashboard">
+          <span className="text-primary font-semibold">Dashboard</span>
+        </Link>
+      )}
+
+      {/* dashboard redirect button */}
 
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
