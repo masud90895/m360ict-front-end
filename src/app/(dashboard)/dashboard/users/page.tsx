@@ -127,13 +127,6 @@ const UserList = () => {
       //   sorter: true,
     },
     {
-      title: "Role",
-      dataIndex: "profile",
-      render: function (data: Record<string, string>) {
-        return <>{data?.role ?? "-"}</>;
-      },
-    },
-    {
       title: "CreatedAt",
       dataIndex: "createdAt",
       render: function (data: any) {
