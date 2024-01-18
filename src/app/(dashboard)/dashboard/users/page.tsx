@@ -12,11 +12,6 @@ import { Button, Col, Input, Row, message } from "antd";
 import { useState } from "react";
 import dayjs from "dayjs";
 
-import {
-  useDeleteUserMutation,
-  useGetAllUsersQuery,
-  useUpdateUserMutation,
-} from "@/Redux/features/userApi/userApi";
 import { Modal } from "antd";
 const { confirm } = Modal;
 import { ExclamationCircleFilled } from "@ant-design/icons";
@@ -24,7 +19,16 @@ import { ExclamationCircleFilled } from "@ant-design/icons";
 import FormSelectField from "@/components/Forms/FormSelectField";
 import { getUserInfo } from "@/helpers/auth.service";
 import ReusableTable from "@/components/ui/ReusableTable";
-
+import Form from "@/components/Forms/Forms";
+import ModalForm from "@/components/modal/ModalForm";
+import ActionBar from "@/components/ui/ActionBar";
+import ReusableBreadCrumb from "@/components/ui/ReusableBreadCrumb";
+import {
+  useDeleteUserMutation,
+  useGetAllUsersQuery,
+  useUpdateUserMutation,
+} from "@/redux/features/userApi/userApi";
+import InputField from "@/components/Forms/InputField";
 
 const UserList = () => {
   const user: any = getUserInfo();
@@ -144,12 +148,7 @@ const UserList = () => {
       dataIndex: "profile",
       render: function (data: Record<string, string>) {
         const fullName = `${data?.firstName} ${data?.lastName}`;
-        return (
-          <div className="flex gap-2 items-center">
-        
-            {fullName}
-          </div>
-        );
+        return <div className="flex gap-2 items-center">{fullName}</div>;
       },
       //   sorter: true,
     },
@@ -226,7 +225,7 @@ const UserList = () => {
   return (
     <>
       <div className="container rounded bg-white mt-1 mb-5 p-4">
-        <UMBreadCrumb
+        <ReusableBreadCrumb
           items={[
             {
               label: "dashboard",
@@ -234,7 +233,7 @@ const UserList = () => {
             },
             {
               label: "user-lists",
-              link: "/dashboard/user-lists",
+              link: "/dashboard/users",
             },
           ]}
         />
@@ -253,7 +252,6 @@ const UserList = () => {
               }}
             />
             <div>
-              
               {(!!sortBy || !!sortOrder || !!searchTerm) && (
                 <Button
                   onClick={resetFilters}
@@ -283,7 +281,7 @@ const UserList = () => {
         <ModalForm
           open={isEditModalOpen}
           setOpen={setIsEditModalOpen}
-          title="FAQ"
+          title="User List"
           isLoading={updateLoading}
         >
           <Form submitHandler={handleEdit} defaultValues={editData}>
@@ -307,11 +305,10 @@ const UserList = () => {
               </p>
               <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
                 <Col span={12} style={{ margin: "10px 0" }}>
-                  <FormInput
+                  <InputField
                     name="email"
                     label="Email"
                     type="email"
-                    size="large"
                     placeholder="Enter email"
                     disabled
                     required
@@ -351,27 +348,22 @@ const UserList = () => {
                 Basic information
               </p>
               <Row gutter={{ xs: 24, xl: 8, lg: 8, md: 24 }}>
-              
                 <Col span={12} style={{ margin: "10px 0" }}>
-                  <FormInput
+                  <InputField
                     name="profile.firstName"
                     label="First Name"
-                    size="large"
                     placeholder="Enter First Name"
                     required
                   />
                 </Col>
                 <Col span={12} style={{ margin: "10px 0" }}>
-                  <FormInput
+                  <InputField
                     name="profile.lastName"
                     label="Last Name."
-                    size="large"
                     placeholder="Enter Last Name"
                     required
                   />
                 </Col>{" "}
-              
-               
               </Row>
             </div>
 
