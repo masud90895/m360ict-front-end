@@ -1,15 +1,13 @@
-
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { tagTypesList } from "../types/tagsType";
 import config from "@/config";
-
 
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: `${config?.apiBaseUrl}`,
     prepareHeaders: (headers) => {
-      const token = localStorage.getItem("user");
+      const token = localStorage.getItem("auth-token");
       if (token) {
         headers.set("Authorization", `${token}`);
       }

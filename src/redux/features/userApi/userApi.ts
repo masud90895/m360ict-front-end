@@ -1,5 +1,5 @@
 import { api } from "@/redux/api/api";
-import { tagTypes, tagTypesList } from "@/redux/types/tagsType";
+import { tagTypes } from "@/redux/types/tagsType";
 
 const userApi = api.injectEndpoints({
   endpoints: (builder) => ({

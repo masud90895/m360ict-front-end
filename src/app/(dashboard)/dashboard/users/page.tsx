@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import {
@@ -9,15 +8,12 @@ import {
 
 import { Button, Col, Input, Row, message } from "antd";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 
 import { Modal } from "antd";
 const { confirm } = Modal;
 import { ExclamationCircleFilled } from "@ant-design/icons";
-
-import FormSelectField from "@/components/Forms/FormSelectField";
-import { getUserInfo } from "@/helpers/auth.service";
 import ReusableTable from "@/components/ui/ReusableTable";
 import Form from "@/components/Forms/Forms";
 import ModalForm from "@/components/modal/ModalForm";
@@ -29,35 +25,9 @@ import {
   useUpdateUserMutation,
 } from "@/redux/features/userApi/userApi";
 import InputField from "@/components/Forms/InputField";
+import config from "@/config";
 
 const UserList = () => {
-  const user: any = getUserInfo();
-
-  const superAdminRole = [
-    {
-      label: "USER",
-      value: "USER",
-    },
-    {
-      label: "ADMIN",
-      value: "ADMIN",
-    },
-    {
-      label: "SUPER_ADMIN",
-      value: "SUPER_ADMIN",
-    },
-  ];
-  const adminRole = [
-    {
-      label: "USER",
-      value: "USER",
-    },
-    {
-      label: "ADMIN",
-      value: "ADMIN",
-    },
-  ];
-
   const query: Record<string, any> = {};
 
   const [page, setPage] = useState<number>(1);
@@ -65,7 +35,6 @@ const UserList = () => {
   const [sortBy, setSortBy] = useState<string>("");
   const [sortOrder, setSortOrder] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
-
   // get data
   const { data, isLoading } = useGetAllUsersQuery(searchTerm);
   const filteredData = data?.filter(
@@ -311,19 +280,6 @@ const UserList = () => {
                     type="email"
                     placeholder="Enter email"
                     disabled
-                    required
-                  />
-                </Col>
-
-                <Col span={12} style={{ margin: "10px 0" }}>
-                  <FormSelectField
-                    name="profile.role"
-                    label="User Role"
-                    options={
-                      user?.role === "SUPER_ADMIN" ? superAdminRole : adminRole
-                    }
-                    size="large"
-                    placeholder="Select Role"
                     required
                   />
                 </Col>

@@ -2,7 +2,7 @@
 
 import { Provider } from "react-redux";
 import StyledComponentsRegistry from "./AntResistry";
-import { ConfigProvider, theme } from "antd";
+import { ConfigProvider } from "antd";
 import store from "@/redux/app/store";
 
 const Providers: React.FC<{ children: React.ReactNode }> = ({ children }) => {
