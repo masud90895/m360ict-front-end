@@ -12,4 +12,9 @@ export default function middleware(req: NextRequest) {
   //     return NextResponse.redirect(absoluteURL.toString());
   //   }
   // }
+
+  if (req.nextUrl.pathname === "/") {
+    const absoluteURL = new URL("/sign-in", req.nextUrl.origin);
+    return NextResponse.redirect(absoluteURL.toString());
+  }
 }

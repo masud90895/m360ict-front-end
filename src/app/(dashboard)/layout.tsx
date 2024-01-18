@@ -8,6 +8,7 @@ import SideMenuUI from "@/components/ui/SideMenuUI";
 import { dashboardItems } from "@/helpers/dashboardItems";
 import DashboardSidebar from "@/components/dashboard/DashboardSider";
 import DashboardNavbar from "@/components/dashboard/DashboardNavbar";
+import { isLoggedIn } from "@/helpers/auth.service";
 
 const { Content } = Layout;
 
@@ -16,8 +17,13 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
 
   const screens = useBreakpoint();
- 
 
+  const isUserLoggedIn = isLoggedIn();
+
+  if (!isUserLoggedIn && typeof window !== "undefined") {
+    message.error("You are not logged in");
+    return router.push("/sign-in");
+  }
 
   return (
     <Layout
